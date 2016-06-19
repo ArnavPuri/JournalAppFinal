@@ -31,6 +31,6 @@ public class DBMethods {
         cv.put(Constants.CONTENT_NAME,content);
         cv.put(Constants.MOOD_NAME,mood);
         cv.put(Constants.CATEGORY_NAME,category);
-        return db.insert(Constants.TABLE_NAME,null, cv);
+        return db.insert(Constants.TABLE_NAME, null, cv);
     }
 }

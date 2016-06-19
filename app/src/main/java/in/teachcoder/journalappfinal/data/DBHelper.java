@@ -19,10 +19,10 @@ public class DBHelper extends SQLiteOpenHelper {
             Constants.CATEGORY_NAME + " text not null, " +
             Constants.MOOD_NAME + " text not null) ";
 
-
     public DBHelper(Context context) {
         super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
