@@ -1,5 +1,6 @@
 package in.teachcoder.journalappfinal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -9,5 +10,8 @@ public class EntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }
