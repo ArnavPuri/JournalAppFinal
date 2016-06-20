@@ -2,6 +2,7 @@ package in.teachcoder.journalappfinal.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -32,5 +33,10 @@ public class DBMethods {
         cv.put(Constants.MOOD_NAME,mood);
         cv.put(Constants.CATEGORY_NAME,category);
         return db.insert(Constants.TABLE_NAME, null, cv);
+    }
+
+    public Cursor getEntries(){
+        //SELECT * FROM table_name;
+       return dbHelper.getReadableDatabase().query(Constants.TABLE_NAME, null, null, null, null,null,null);
     }
 }
