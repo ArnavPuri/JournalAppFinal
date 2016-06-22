@@ -13,4 +13,13 @@
         android:id="@+id/entries_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_entry_btn"
+        android:layout_height="56dp"
+        android:layout_width="56dp"
+        android:background="@color/colorAccent"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>
