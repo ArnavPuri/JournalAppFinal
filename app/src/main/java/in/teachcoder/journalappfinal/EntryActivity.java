@@ -1,5 +1,6 @@
 package in.teachcoder.journalappfinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -64,7 +65,8 @@ public class EntryActivity extends AppCompatActivity {
         dbMethods.close();
         Log.d("EntryActivity", "Entry added to DB " + entryHighlight);
 
-
+        Intent i = new Intent(EntryActivity.this, MainActivity.class);
+        startActivity(i);
     }
 
 }
