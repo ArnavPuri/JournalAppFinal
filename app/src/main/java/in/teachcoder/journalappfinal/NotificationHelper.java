@@ -21,7 +21,6 @@ public class NotificationHelper extends BroadcastReceiver {
     private void showNotification(Context context) {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
                 new Intent(context, MainActivity.class), 0);
-        Log.d("Notificationhelper","Notification Set");
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("How was your Day?")
@@ -29,8 +28,9 @@ public class NotificationHelper extends BroadcastReceiver {
         builder.setContentIntent(pendingIntent);
         builder.setDefaults(Notification.DEFAULT_SOUND);
         builder.setAutoCancel(true);
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, builder.build());
+        NotificationManager mNotificationManager = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, builder.build());
 
 
     }

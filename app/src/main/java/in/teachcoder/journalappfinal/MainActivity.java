@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setReminder() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 12);
-        calendar.set(Calendar.MINUTE, 42);
+        calendar.set(Calendar.HOUR_OF_DAY, 15);
+        calendar.set(Calendar.MINUTE, 45);
         calendar.set(Calendar.SECOND, 0);
 
         Intent notificationMessage = new Intent(this, NotificationHelper.class);
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pi = PendingIntent.getBroadcast(this, 0,
                 notificationMessage, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+//        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 20*1000,
                 AlarmManager.INTERVAL_DAY, pi);
     }
 }
