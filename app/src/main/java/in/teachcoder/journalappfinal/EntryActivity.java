@@ -45,10 +45,10 @@ public class EntryActivity extends AppCompatActivity {
             comingFrom = " ";
         }
 
-        if (comingFrom == "DetailActivity") {
+        if (comingFrom.equals("DetailActivity")) {
             position = getIntent().getIntExtra("clicked_item", 0);
-            SimpleCursorAdapter adapter = (SimpleCursorAdapter) MainActivity.entriesList.getAdapter();
-            Cursor myCursor = adapter.getCursor();
+            myDB.open();
+            Cursor myCursor = myDB.getEntries();
             myCursor.moveToPosition(position);
             id = myCursor.getInt(myCursor.getColumnIndexOrThrow(Constants.KEY_ID));
             title.setText(myCursor.getString(myCursor.getColumnIndexOrThrow(Constants.HIGHLIGHT_NAME)));
@@ -58,7 +58,7 @@ public class EntryActivity extends AppCompatActivity {
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    updateDB();
+                   updateDB();
                 }
             });
         }
@@ -75,6 +75,24 @@ public class EntryActivity extends AppCompatActivity {
         myDB.insertEntry(entryTitle, entryHighlight, entryContent, category, dateFormat.format(date));
         myDB.close();
 
+
+        title.setText("");
+        content.setText("");
+        mood.setText("");
+        Log.d("Database Updated", entryTitle + " added to db");
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+    private void updateDB() {
+        myDB.open();
+        String entryTitle = title.getText().toString();
+        String entryHighlight = mood.getText().toString();
+        String entryContent = content.getText().toString();
+        String category = "Fun";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        Date date = new Date();
+        myDB.updateEntry(entryTitle, entryHighlight, entryContent, category, dateFormat.format(date),id);
+        myDB.close();
 
         title.setText("");
         content.setText("");
